@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+from dotenv import load_dotenv, find_dotenvß
 
 import openai
 
@@ -8,23 +9,36 @@ history = []
 
 global OAI
 
-try:
-    with open("config.json", "r") as json_file:
-        data = json.load(json_file)
-except:
-    print("Unable to open JSON file.")
-    exit()
+
+# config.json
+# try:
+#     with open("config.json", "r") as json_file:
+#         data = json.load(json_file)
+# except:
+#     print("Unable to open JSON file.")
+#     exit()
+#
+# class OAI:
+#     key = data["keys"][0]["OAI_key"]
+#     model = data["OAI_data"][0]["model"]
+#     prompt = data["OAI_data"][0]["prompt"]
+#     temperature = data["OAI_data"][0]["temperature"]
+#     max_tokens = data["OAI_data"][0]["max_tokens"]
+#     top_p = data["OAI_data"][0]["top_p"]
+#     frequency_penalty = data["OAI_data"][0]["frequency_penalty"]
+#     presence_penalty = data["OAI_data"][0]["presence_penalty"]
+load_dotenv(find_dotenv())
 
 
 class OAI:
-    key = data["keys"][0]["OAI_key"]
-    model = data["OAI_data"][0]["model"]
-    prompt = data["OAI_data"][0]["prompt"]
-    temperature = data["OAI_data"][0]["temperature"]
-    max_tokens = data["OAI_data"][0]["max_tokens"]
-    top_p = data["OAI_data"][0]["top_p"]
-    frequency_penalty = data["OAI_data"][0]["frequency_penalty"]
-    presence_penalty = data["OAI_data"][0]["presence_penalty"]
+    key = os.getenv("OPENAI_API_KEY")
+    model = os.getenv("MODEL")
+    prompt = os.getenv("PROMPT")
+    temperature = os.getenv("TEMPERATURE")
+    max_tokens = os.getenv("MAX_TOKEN")
+    top_p = os.getenv("TOP_P")
+    frequency_penalty = os.getenv("FREQUENCY_PENALTY")
+    presence_penalty = os.getenv("PRESENCE_PENALTY")
 
 
 def send(prompt):
