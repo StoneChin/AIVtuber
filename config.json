@@ -1,0 +1,31 @@
+{
+    "keys": [
+        {
+            "OAI_key": "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"
+        }
+    ],
+    "TTS_data": [
+        {
+            "voice": "MF3mGyEYCl7XYWbV9V6O"
+        }
+
+    ],
+    "OAI_data": [
+        {
+            "model": "text-davinci-003",
+            "prompt": "This is how a toxic entitled evil female streamer responded in a conversation. She would respond in a toxic and rude manner. She would talk about the message and would elaborate on it as well as share some of her experiences if possible. She would also go on a tangent if possible.",
+            "temperature": 0.9,
+            "max_tokens": 100,
+            "top_p": 1,
+            "frequency_penalty": 1,
+            "presence_penalty": 1
+        }
+
+    ],
+    "Log_config":[
+        {
+            "LOG_ENABLE": true,
+            "LOG_TO_FILE": true
+        }
+    ]
+}
