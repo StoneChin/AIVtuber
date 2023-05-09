@@ -1,7 +1,7 @@
 import requests
 import json
 import os
-from dotenv import load_dotenv, find_dotenvß
+from dotenv import load_dotenv, find_dotenv
 
 import openai
 
@@ -34,11 +34,11 @@ class OAI:
     key = os.getenv("OPENAI_API_KEY")
     model = os.getenv("MODEL")
     prompt = os.getenv("PROMPT")
-    temperature = os.getenv("TEMPERATURE")
-    max_tokens = os.getenv("MAX_TOKEN")
-    top_p = os.getenv("TOP_P")
-    frequency_penalty = os.getenv("FREQUENCY_PENALTY")
-    presence_penalty = os.getenv("PRESENCE_PENALTY")
+    temperature = float(os.getenv("TEMPERATURE"))
+    max_tokens = int(os.getenv("MAX_TOKEN"))
+    top_p = float(os.getenv("TOP_P"))
+    frequency_penalty = float(os.getenv("FREQUENCY_PENALTY"))
+    presence_penalty = float(os.getenv("PRESENCE_PENALTY"))
 
 
 def send(prompt):

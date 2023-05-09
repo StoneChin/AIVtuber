@@ -69,22 +69,28 @@ class MyHandler(blivedm.BaseHandler):
 
     async def _on_heartbeat(self, client: blivedm.BLiveClient, message: blivedm.HeartbeatMessage):
         print(f'[{client.room_id}] 当前人气值：{message.popularity}')
+        print(type(message))
+        print(type(message) == blivedm.models.HeartbeatMessage)
 
     async def _on_danmaku(self, client: blivedm.BLiveClient, message: blivedm.DanmakuMessage):
         print(f'[{client.room_id}] {message.uname}：{message.msg}')
-        voice = send(message.msg)
-        print(voice)
+        print(type(message))
+        print(type(message) == blivedm.models.DanmakuMessage)
 
     async def _on_gift(self, client: blivedm.BLiveClient, message: blivedm.GiftMessage):
         print(f'[{client.room_id}] {message.uname} 赠送{message.gift_name}x{message.num}'
               f' （{message.coin_type}瓜子x{message.total_coin}）')
+        print(type(message))
+        print(type(message) == blivedm.models.HeartbeatMessage)
 
     async def _on_buy_guard(self, client: blivedm.BLiveClient, message: blivedm.GuardBuyMessage):
         print(f'[{client.room_id}] {message.username} 购买{message.gift_name}')
+        print(type(message))
 
     async def _on_super_chat(self, client: blivedm.BLiveClient, message: blivedm.SuperChatMessage):
         print(
             f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}')
+        print(type(message))
 
 
 if __name__ == '__main__':
