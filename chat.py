@@ -41,6 +41,7 @@ class OAI:
     presence_penalty = float(os.getenv("PRESENCE_PENALTY"))
 
 
+# ChatGLM
 def send(prompt):
     global history
     url = "http://10.129.2.21:5001/"
@@ -52,6 +53,7 @@ def send(prompt):
     return _['response']
 
 
+# ChatGPT
 def llm(message):
     openai.api_key = OAI.key
     start_sequence = " #########"

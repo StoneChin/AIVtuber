@@ -24,8 +24,8 @@ logging.basicConfig(filename=log_path, level=logging.INFO)
 
 # 直播间ID的取值看直播间URL
 TEST_ROOM_IDS = [
-    # 5007346
-    21792294
+    5007346
+    # 21792294
 ]
 
 
@@ -109,7 +109,7 @@ Return: None
 
 def voice(message):
     if type(message) == blivedm.models.DanmakuMessage:
-        if (len(message.msg) < 8):
+        if (len(message.msg) < 6):
             return
         response = llm(message.msg)
         tts_full_message = f"观众{message.uname}说：{message.msg}。{response}"

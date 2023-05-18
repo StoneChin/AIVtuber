@@ -3,9 +3,11 @@
 - [x] 获取bilibili直播间弹幕等信息
 - [x] 连接语言模型进行对话
 - [x] 使用tts实现文本转语音
+- [x] 连接Vtube studio
+- [x] 数据集获取
+- [ ] 模型微调
 - [ ] 待回答问题放到队列中，优先播报礼物感谢
-- [ ] 连接Vtube studio
-- [ ] 情感分析？虚拟形象对应动作展示
+- [ ] 情感分析，虚拟形象对应动作展示
 
 ## 关联项目
 * **获取bilibili弹幕**: [blivedm](https://github.com/xfgryujk/blivedm)
