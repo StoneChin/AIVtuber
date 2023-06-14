@@ -10,6 +10,8 @@ import blivedm
 from chat import send, llm
 
 from utils.subtitle import *
+# 滤词器
+from wordfilter import Wordfilter
 
 """
 初始化
@@ -18,6 +20,15 @@ log_path = os.getenv("LOG_PATH")
 message_record_path = os.getenv("MESSAGE_RECORD_PATH")
 query_message = 0
 
+# 读取
+classes_path = os.path.expanduser('./file/badwords_zh.txt')
+with open(classes_path, 'r', encoding='UTF-8') as f:
+    badwords_list = f.readlines()
+badwords_list = [c.strip() for c in badwords_list]
+print(badwords_list)
+
+wordfilter = Wordfilter()
+wordfilter.addWords(badwords_list)
 """
 日志记录
 """
@@ -111,7 +122,9 @@ Return: None
 
 def voice(message):
     if type(message) == blivedm.models.DanmakuMessage:
-        if (len(message.msg) < 3):
+        # 如果字数长度过短 or 出现屏蔽词filter内容
+        # 直接skip
+        if len(message.msg) < 2 or wordfilter.blacklisted(message.msg):
             return
         response = llm(message.msg)
         tts_full_message = f"观众{message.uname}说：{message.msg}。{response}"
